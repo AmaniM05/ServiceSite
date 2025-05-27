@@ -1,7 +1,7 @@
 /* Custom styles to complement Bootstrap */
 :root {
-  --bs-primary: #0d6efd;
-  --bs-primary-rgb: 13, 110, 253;
+  --bs-primary: #000000;
+
 }
 
 body {
