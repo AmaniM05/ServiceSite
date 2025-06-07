@@ -25,8 +25,10 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
+
+          
           <li class="nav-item">
-            <a class="nav-link active" href="#services">Services</a>
+            <a class="nav-link" href="#services">Services</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#about">About Us</a>
@@ -178,23 +180,40 @@
                 <h4>Appointment Details</h4>
                 <form id="appointmentForm">
                   <div class="mb-3">
+                    <label for="ownerName" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="ownerName" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" class="form-control" id="email" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="text" class="form-control" id="phone" required>
+                  </div>
+                  
+                  <!--radio button to select pet type-->
+                  <div class="mb-3">
+                    <label class="form-label d-block">Pet Type</label>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="petType" id="petCat" value="cat" required>
+                      <label class="form-check-label" for="petCat">Cat</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="petType" id="petDog" value="dog">
+                      <label class="form-check-label" for="petDog">Dog</label>
+                    </div>
+                  </div>
+
+                  <!--drop down menu for services changes with the pet type-->
+                  <div class="mb-3">
                     <label for="serviceType" class="form-label">Service</label>
-                    <select class="form-select" id="serviceType" required>
-                      <option value="">Select a service</option>
-                      <option value="nail-trimming">Nail Trimming - $15.00</option>
-                      <option value="haircut">Haircut & Styling - $50.00</option>
-                      <option value="bathing">Bathing - $30.00</option>
-                      <option value="full-grooming">Full Grooming Package - $75.00</option>
+                    <select class="form-select" id="serviceType" disabled required>
+                      <option value="">Please select a pet type first</option>
                     </select>
                   </div>
-                  <div class="mb-3">
-                    <label for="petName" class="form-label">Pet's Name</label>
-                    <input type="text" class="form-control" id="petName" required>
-                  </div>
-                  <div class="mb-3">
-                    <label for="petBreed" class="form-label">Pet's Breed</label>
-                    <input type="text" class="form-control" id="petBreed" required>
-                  </div>
+
+
                   <div class="mb-3">
                     <label for="timeSlot" class="form-label">Available Time Slots</label>
                     <select class="form-select" id="timeSlot" required>
@@ -285,6 +304,45 @@
         modal.hide();
       });
     });
+
+
+    //javascript for dropdown menu based on animal type
+      const serviceSelect = document.getElementById('serviceType');
+
+      const catServices = [
+        { value: 'full-kitty-spa', text: 'Full Kitty Spa' },
+        { value: 'pawfect-trim', text: 'A Pawfect Trim' }
+      ];
+
+      const dogServices = [
+        { value: 'barky-bath', text: 'A Barky Bath' },
+        { value: 'nail-trim', text: 'Nail Trim' }
+      ];
+
+      function updateServiceOptions(petType) {
+        serviceSelect.innerHTML = '';
+
+        const services = petType === 'cat' ? catServices :
+                        petType === 'dog' ? dogServices : null;
+
+        if (services) {
+          serviceSelect.disabled = false;
+          serviceSelect.appendChild(new Option('Select a service', ''));
+          services.forEach(service => {
+            const option = new Option(service.text, service.value);
+            serviceSelect.appendChild(option);
+          });
+        } else { 
+          serviceSelect.disabled = true;
+          serviceSelect.appendChild(new Option('Please select a pet type first', ''));
+        }
+      }
+
+      document.querySelectorAll('input[name="petType"]').forEach(radio => {
+        radio.addEventListener('change', (e) => {
+          updateServiceOptions(e.target.value);
+        });
+      });
   </script>
 </body>
 </html>
