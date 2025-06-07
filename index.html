@@ -179,16 +179,20 @@
                     <label for="phone" class="form-label">Phone Number</label>
                     <input type="text" class="form-control" id="phone" required>
                   </div>
+                  <div class="mb-3">
+                    <label for="petName" class="form-label">Pet Name</label>
+                    <input type="text" class="form-control" id="petName" required>
+                  </div>
                   
                   <!--radio button to select pet type-->
                   <div class="mb-3">
                     <label class="form-label d-block">Pet Type</label>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="petType" id="petCat" value="cat" required>
+                      <input class="form-check-input" type="radio" name="petType" id="petCat" value="Cat" required>
                       <label class="form-check-label" for="petCat">Cat</label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="petType" id="petDog" value="dog">
+                      <input class="form-check-input" type="radio" name="petType" id="petDog" value="Dog">
                       <label class="form-check-label" for="petDog">Dog</label>
                     </div>
                   </div>
@@ -275,17 +279,23 @@
       // Handle confirm booking button
       document.getElementById('confirmBooking').addEventListener('click', function() {
         const selectedDate = calendar.selectedDates[0];
-        const service = document.getElementById('serviceType').value;
+
+        const ownerName = document.getElementById('ownerName').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
         const petName = document.getElementById('petName').value;
+        const petTypeInput = document.querySelector('input[name="petType"]:checked');
+        const petType = petTypeInput ? petTypeInput.value : null;
+        const service = document.getElementById('serviceType').value;
         const timeSlot = document.getElementById('timeSlot').value;
         
-        if (!selectedDate || !service || !petName || !timeSlot) {
+        if (!ownerName || !email || !phone || !selectedDate || !service || !petName || !petType || !timeSlot) {
           alert('Please fill all required fields!');
           return;
         }
         
         const formattedDate = calendar.formatDate(selectedDate, 'Y-m-d');
-        alert(`Booking confirmed!\n\nPet: ${petName}\nService: ${service}\nDate: ${formattedDate}\nTime: ${timeSlot}`);
+        alert(`Booking confirmed!\n\nOwner: ${ownerName}\nPet: ${petName}\nType: ${petType}\nService: ${service}\nDate: ${formattedDate}\nTime: ${timeSlot}`);
         
         // Close the modal
         const modal = bootstrap.Modal.getInstance(document.getElementById('bookingModal'));
@@ -298,7 +308,7 @@
       const serviceSelect = document.getElementById('serviceType');
 
       const catServices = [
-        { value: 'full-kitty-spa', text: 'Full Kitty Spa' },
+        { value: 'Full Kitty Spa', text: 'Full Kitty Spa' },
         { value: 'pawfect-trim', text: 'A Pawfect Trim' }
       ];
 
@@ -310,8 +320,8 @@
       function updateServiceOptions(petType) {
         serviceSelect.innerHTML = '';
 
-        const services = petType === 'cat' ? catServices :
-                        petType === 'dog' ? dogServices : null;
+        const services = petType === 'Cat' ? catServices :
+                         petType === 'Dog' ? dogServices : null;
 
         if (services) {
           serviceSelect.disabled = false;
