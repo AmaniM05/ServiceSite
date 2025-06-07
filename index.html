@@ -30,8 +30,12 @@
             <a class="nav-link" href="#about">About Us</a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="#services">Services</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Services</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="dog-services.html">Dog Services</a></li>
+              <li><a class="dropdown-item" href="cat-services.html">Cat Services</a></li>
+            </ul>
           </li>
 
           <li class="nav-item">
@@ -306,19 +310,22 @@
 
 
     //javascript for dropdown menu based on animal type
-      const serviceSelect = document.getElementById('serviceType');
+    const serviceSelect = document.getElementById('serviceType');
 
-      const catServices = [
+    const catServices = [
         { value: 'Full Kitty Spa', text: 'Full Kitty Spa' },
-        { value: 'pawfect-trim', text: 'A Pawfect Trim' }
-      ];
+        { value: 'A Pawfect Trim', text: 'A Pawfect Trim' },
+        { value: 'The De-shed Deluxe', text: 'The De-shed Deluxe' }
+    ];
 
-      const dogServices = [
-        { value: 'barky-bath', text: 'A Barky Bath' },
-        { value: 'nail-trim', text: 'Nail Trim' }
-      ];
+    const dogServices = [
+        { value: 'Full Doggy Spa', text: 'Full Doggy Spa' },
+        { value: 'Basic Bath & Brush', text: 'Basic Bath & Brush' },
+        { value: 'The Tail Wag Trim', text: 'The Tail Wag Trim' }
+    ];
 
-      function updateServiceOptions(petType) {
+
+    function updateServiceOptions(petType) {
         serviceSelect.innerHTML = '';
 
         const services = petType === 'Cat' ? catServices :
