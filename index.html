@@ -58,6 +58,13 @@
     </div>
   </header>
 
+  <!-- React Component Section -->
+  <section class="py-4 bg-white">
+    <div class="container">
+      <div id="react-greeting"></div>
+    </div>
+  </section>
+
   <!-- About Section -->
   <section id="about" class="about-section py-5 bg-light">
     <div class="container">
@@ -151,89 +158,88 @@
   </section>
 
   <!-- Booking Modal -->
-<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="bookingModalLabel">Book an Appointment</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-6">
-              <h4>Select a Date</h4>
-              <div id="bookingCalendar"></div>
-              <p class="text-muted mt-2"><small>* Available dates are highlighted in green</small></p>
-            </div>
-            <div class="col-md-6">
-              <h4>Appointment Details</h4>
-              <form id="appointmentForm">
-                <div class="mb-3">
-                  <label for="ownerName" class="form-label">Your Name*</label>
-                  <input type="text" class="form-control" id="ownerName" required>
-                </div>
-                <div class="mb-3">
-                  <label for="email" class="form-label">Email*</label>
-                  <input type="email" class="form-control" id="email" required>
-                </div>
-                <div class="mb-3">
-                  <label for="phone" class="form-label">Phone Number*</label>
-                  <input type="tel" class="form-control" id="phone" required>
-                </div>
-                <div class="mb-3">
-                  <label for="petName" class="form-label">Pet's Name*</label>
-                  <input type="text" class="form-control" id="petName" required>
-                </div>
-                
-                <div class="mb-3">
-                  <label class="form-label d-block">Pet Type*</label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="petType" id="petCat" value="Cat" required>
-                    <label class="form-check-label" for="petCat">Cat</label>
+  <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="bookingModalLabel">Book an Appointment</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-6">
+                <h4>Select a Date</h4>
+                <div id="bookingCalendar"></div>
+                <p class="text-muted mt-2"><small>* Available dates are highlighted in green</small></p>
+              </div>
+              <div class="col-md-6">
+                <h4>Appointment Details</h4>
+                <form id="appointmentForm">
+                  <div class="mb-3">
+                    <label for="ownerName" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="ownerName" required>
                   </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="petType" id="petDog" value="Dog" required>
-                    <label class="form-check-label" for="petDog">Dog</label>
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" required>
                   </div>
-                </div>
+                  <div class="mb-3">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="petName" class="form-label">Pet Name</label>
+                    <input type="text" class="form-control" id="petName" required>
+                  </div>
+                  
+                  <div class="mb-3">
+                    <label class="form-label d-block">Pet Type</label>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="petType" id="petCat" value="Cat" required>
+                      <label class="form-check-label" for="petCat">Cat</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="petType" id="petDog" value="Dog">
+                      <label class="form-check-label" for="petDog">Dog</label>
+                    </div>
+                  </div>
 
-                <div class="mb-3">
-                  <label for="serviceType" class="form-label">Service*</label>
-                  <select class="form-select" id="serviceType" disabled required>
-                    <option value="">Select pet type first</option>
-                  </select>
-                </div>
+                  <div class="mb-3">
+                    <label for="serviceType" class="form-label">Service</label>
+                    <select class="form-select" id="serviceType" disabled required>
+                      <option value="">Please select a pet type first</option>
+                    </select>
+                  </div>
 
-                <div class="mb-3">
-                  <label for="timeSlot" class="form-label">Time Slot*</label>
-                  <select class="form-select" id="timeSlot" required>
-                    <option value="">Select a time</option>
-                    <option value="9:00 AM">9:00 AM</option>
-                    <option value="10:30 AM">10:30 AM</option>
-                    <option value="12:00 PM">12:00 PM</option>
-                    <option value="1:30 PM">1:30 PM</option>
-                    <option value="3:00 PM">3:00 PM</option>
-                    <option value="4:30 PM">4:30 PM</option>
-                  </select>
-                </div>
-                
-                <div class="mb-3">
-                  <label for="specialRequests" class="form-label">Special Requests</label>
-                  <textarea class="form-control" id="specialRequests" rows="3" placeholder="Any special instructions for your pet's grooming..."></textarea>
-                </div>
-              </form>
+                  <div class="mb-3">
+                    <label for="timeSlot" class="form-label">Available Time Slots</label>
+                    <select class="form-select" id="timeSlot" required>
+                      <option value="">Select a time</option>
+                      <option value="9:00 AM">9:00 AM</option>
+                      <option value="10:30 AM">10:30 AM</option>
+                      <option value="12:00 PM">12:00 PM</option>
+                      <option value="1:30 PM">1:30 PM</option>
+                      <option value="3:00 PM">3:00 PM</option>
+                      <option value="4:30 PM">4:30 PM</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="specialRequests" class="form-label">Special Requests</label>
+                    <textarea class="form-control" id="specialRequests" rows="3"></textarea>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="confirmBooking">Confirm Booking</button>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="confirmBooking">Confirm Booking</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
   <!-- Footer -->
   <footer class="py-4 bg-dark text-white">
@@ -251,9 +257,66 @@
   <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-  <div id="react-greeting"></div>
 
-  
+  <!-- React Component -->
+  <script type="text/babel">
+    function PetCounter() {
+      const [dogCount, setDogCount] = React.useState(0);
+      const [catCount, setCatCount] = React.useState(0);
+
+      return (
+        <div className="card shadow-sm p-4 mb-4">
+          <div className="text-center">
+            <h3><i className="fas fa-paw me-2"></i>Pet Visitors Counter</h3>
+            <p className="text-muted">See how many pets we've helped today!</p>
+            
+            <div className="d-flex justify-content-around mt-3">
+              <div className="text-center">
+                <button 
+                  className="btn btn-outline-primary btn-lg"
+                  onClick={() => setDogCount(dogCount + 1)}>
+                  <i className="fas fa-dog me-2"></i>
+                  {dogCount} Dogs
+                </button>
+              </div>
+              
+              <div className="text-center">
+                <button 
+                  className="btn btn-outline-primary btn-lg"
+                  onClick={() => setCatCount(catCount + 1)}>
+                  <i className="fas fa-cat me-2"></i>
+                  {catCount} Cats
+                </button>
+              </div>
+            </div>
+            
+            <div className="mt-4">
+              <div className="progress">
+                <div 
+                  className="progress-bar bg-success" 
+                  role="progressbar" 
+                  style={{ width: `${(dogCount / (dogCount + catCount || 1)) * 100}%` }}>
+                  Dogs
+                </div>
+                <div 
+                  className="progress-bar bg-info" 
+                  role="progressbar" 
+                  style={{ width: `${(catCount / (dogCount + catCount || 1)) * 100}%` }}>
+                  Cats
+                </div>
+              </div>
+              <small className="text-muted">Total pets today: {dogCount + catCount}</small>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('react-greeting'));
+    root.render(<PetCounter />);
+  </script>
+
+  <!-- Original JavaScript -->
   <script>
     // Initialize the calendar
     document.addEventListener('DOMContentLoaded', function() {
@@ -263,7 +326,6 @@
         maxDate: new Date().fp_incr(30), 
         disable: [
           function(date) {
-            // Disable weekends
             return (date.getDay() === 0 || date.getDay() === 6);
           }
         ],
@@ -277,16 +339,12 @@
           "2025-06-24",
           "2025-06-25",
           "2025-06-27"
-        ],
-        onChange: function(selectedDates, dateStr, instance) {
-          console.log("Selected date: ", dateStr);
-        }
+        ]
       });
 
       // Handle confirm booking button
       document.getElementById('confirmBooking').addEventListener('click', function() {
         const selectedDate = calendar.selectedDates[0];
-
         const ownerName = document.getElementById('ownerName').value;
         const email = document.getElementById('email').value;
         const phone = document.getElementById('phone').value;
@@ -304,34 +362,27 @@
         const formattedDate = calendar.formatDate(selectedDate, 'Y-m-d');
         alert(`Booking confirmed!\n\nOwner: ${ownerName}\nPet: ${petName}\nType: ${petType}\nService: ${service}\nDate: ${formattedDate}\nTime: ${timeSlot}`);
         
-        // Close the modal
         const modal = bootstrap.Modal.getInstance(document.getElementById('bookingModal'));
         modal.hide();
       });
-    });
 
-
-    //javascript for dropdown menu based on animal type
-    const serviceSelect = document.getElementById('serviceType');
-
-    const catServices = [
+      // Service dropdown logic
+      const serviceSelect = document.getElementById('serviceType');
+      const catServices = [
         { value: 'Full Kitty Spa', text: 'Full Kitty Spa - $65.00' },
         { value: 'A Pawfect Trim', text: 'A Pawfect Trim - $30.00' },
         { value: 'The De-shed Deluxe', text: 'The De-shed Deluxe - $45.00' }
-    ];
+      ];
 
-    const dogServices = [
+      const dogServices = [
         { value: 'Full Doggy Spa', text: 'Full Doggy Spa - $65.00' },
         { value: 'Basic Bath & Brush', text: 'Basic Bath & Brush - $45.00' },
         { value: 'The Tail Wag Trim', text: 'The Tail Wag Trim - $30.00' }
-    ];
+      ];
 
-
-    function updateServiceOptions(petType) {
+      function updateServiceOptions(petType) {
         serviceSelect.innerHTML = '';
-
-        const services = petType === 'Cat' ? catServices :
-                         petType === 'Dog' ? dogServices : null;
+        const services = petType === 'Cat' ? catServices : petType === 'Dog' ? dogServices : null;
 
         if (services) {
           serviceSelect.disabled = false;
@@ -351,6 +402,7 @@
           updateServiceOptions(e.target.value);
         });
       });
+    });
   </script>
 </body>
 </html>
